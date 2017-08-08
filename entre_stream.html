@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html>
+    <title>アントレ2017　最終発表</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Comfortaa" rel="stylesheet">
+    <script src="https://content.jwplatform.com/libraries/84xMoqKg.js"></script>
+    <script>jwplayer.key = "KCPzcfZOY1E2Z+aZ9rSCn8BRXYi9pYga3yXLFUmMCiI=";</script>
+    <link href="https://fonts.googleapis.com/css?family=Work+Sans:100, 300, 500" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/earlyaccess/mplus1c.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/earlyaccess/kokoro.css" rel="stylesheet" />
+<style>
+      @import url(//fonts.googleapis.com/earlyaccess/mplus1p.css);
+      /*body {
+        background-color: #FE2E2E;
+      }*/
+      .w3-bar-item {
+        color: #FE2E2E;
+        font-family: 'Comfortaa';
+        font-size: 18pt;
+        letter-spacing: 5px;
+      }
+      h3 {
+        color: #FE2E2E;
+        font-family: 'Comfortaa';
+        font-size: 16pt;
+        letter-spacing: 2.2px;
+
+      }
+      #s1{
+        font-family: 'Comfortaa';
+        font-size: 16pt;
+      }
+
+      #s1:focus {
+        background-color:red;
+      }
+      #player {
+        display: block;
+        margin: 1em;
+        valign: middle;
+      }
+      h1{
+        color: #FE2E2E;
+        font-family: 'Work Sans';
+        font-weight: 300;
+        font-size: 16pt;
+        letter-spacing: 2.2px;
+        padding: 0px 0px;
+      }
+      .top{
+        border: none;
+      }
+      .title{
+        color: black;
+        font-family: 'Mplus 1p';
+        font-weight: 700;
+        font-size: 30pt;
+        /*letter-spacing: 5px;*/
+        border: none;
+      }
+      .main{
+        border: 0.5px solid #FE2E2E;
+      }
+      span{
+        font-family: "Mplus 1p";
+        font-weight: 300;
+      }
+      a{
+        color: #FE2E2E;
+        font-family: "Mplus 1p";
+        font-weight: 300;
+        font-size:
+      }
+      a:hover{
+        color: blue;
+      }
+
+      p{
+        color: #FE2E2E;
+        font-family: "Mplus 1p";
+        font-weight: 300;
+        font-size:
+        margin-top: 25px;
+        margin-left: 15px;
+      }
+</style>
+<div >
+  <table align="left" style="padding:10px 30px" >
+    <tr>
+      <td class="top"><img src="entre_logo.png" style="width:100%;"></td><td class="title">Class of 2017 最終発表</td>
+    </tr>
+  </table>
+  <table align="center">
+    <tr>
+      <td class="main" rowspan="3" colspan="3" valign="top"><video id="player"></video></td>
+    </tr>
+    <tr>
+      <td id="p1" class="player" style="background: #ffe6e6;" ><span>Camera 1</span><video id="player1"></video></td>
+      <td id="p2" class="player" ><span>Camera 2</span><video id="player2"></video></td>
+    </tr>
+    <tr>
+      <td id="p3" class="player" ><span>Camera 3</span><video id="player3"></video></td>
+      <td id="p4" class="player" ><span>Camera 4</span><video id="player4"></video></td>
+    </tr>
+  </table>
+</div>
+<script>
+function openNav() {
+    document.getElementById("myNav").style.width = "100%";
+}
+
+function closeNav() {
+    document.getElementById("myNav").style.width = "0%";
+}
+function LoadJw(){
+  for (var i = 1; i < 5; i ++){
+    jwplayer("player" + i + "").play();
+  }
+};
+
+function ReplaceContent(camera) {
+  jwplayer("player").setup({
+      height: 394,
+      width: 700,
+      sources: [{
+          file: "http://52.196.81.194:1935/live/myStream" + camera + ".smil/jwplayer.smil"
+      }, {
+          file: "http://52.196.81.194:1935/live/myStream" + camera + "/playlist.m3u8"
+      }],
+      rtmp: {
+          bufferlength: 0
+      },
+      fallback: true,
+      stretching: "uniform"
+  })};
+
+function SetColor(num){
+  console.log("hoge");
+
+  for (var i = 1 ; i < 5 ; i ++){
+    document.getElementById("p" + i).style.background = "white";
+    // document.getElementById("p" + i).style.hover.background = "blue";
+
+  }
+  // var player = document.getElementById("p" + num);
+  // player.style.hover.background = "OrangeRed";
+
+  document.getElementById("p" + num).style.background = "#ffe6e6";
+  };
+  // function SetHover(i){
+  //   document.getElementById("p" + i).style.background = "blue";
+  // };
+
+
+jwplayer("player").setup({
+      width: 700,
+      height: 394,
+      sources: [
+      {
+        file: "http://52.196.81.194:1935/live/myStream1.smil/jwplayer.smil"
+      },
+       {
+        file: "http://52.196.81.194:1935/live/myStream1/playlist.m3u8"
+       }
+     ],
+    rtmp: {
+        bufferlength: 0
+    },
+    fallback: true,
+    stretching: "uniform"
+});
+jwplayer("player").onError(function(){
+    jwplayer("player").load();
+    jwplayer("player").play();
+});
+
+jwplayer("player1").setup({
+    controls: false,
+    mute: true,
+    height: 100,
+    width: 178,
+    sources: [
+      {
+        file: "rtmp://52.196.81.194:1935/live/myStream1_160p"
+    },
+    {
+        file: "http://52.196.81.194:1935/live/myStream1/playlist.m3u8"
+    }],
+    rtmp: {
+        bufferlength: 0
+    },
+    fallback: true,
+    stretching: "uniform"
+});
+jwplayer("player1").on("displayClick", function(){
+    ReplaceContent(1)
+    SetColor(1);
+    // SetHover();
+});
+jwplayer("player1").onError(function(){
+    jwplayer("player1").load();
+    jwplayer("player1").play();
+});
+
+jwplayer("player2").setup({
+    controls: false,
+    mute: true,
+    height: 100,
+    width: 178,
+    sources: [
+      {
+        file: "rtmp://52.196.81.194:1935/live/myStream2_160p"
+    }, {
+        file: "http://52.196.81.194:1935/live/myStream2/playlist.m3u8"
+    }],
+    rtmp: {
+        bufferlength: 0
+    },
+    fallback: true,
+    stretching: "uniform"
+});
+jwplayer("player2").on("displayClick", function(){
+    ReplaceContent(2)
+    SetColor(2);
+});
+jwplayer("player2").onError(function(){
+    jwplayer("player2").load();
+    jwplayer("player2").play();
+});
+
+jwplayer("player3").setup({
+    controls: false,
+    mute: true,
+    height: 100,
+    width: 178,
+    sources: [{
+        file: "rtmp://52.196.81.194:1935/live/myStream3_160p"
+    }, {
+        file: "http://52.196.81.194:1935/live/myStream3/playlist.m3u8"
+    }],
+    rtmp: {
+        bufferlength: 0
+    },
+    fallback: true,
+    stretching: "uniform"
+});
+jwplayer("player3").on("displayClick", function(){
+    ReplaceContent(3)
+    SetColor(3);
+});
+jwplayer("player3").onError(function(){
+    jwplayer("player3").load();
+    jwplayer("player3").play();
+});
+
+jwplayer("player4").setup({
+    controls: false,
+    mute: true,
+    height: 100,
+    width: 178,
+    sources: [{
+        file: "rtmp://52.196.81.194:1935/live/myStream4_160p"
+    }, {
+        file: "http://52.196.81.194:1935/live/myStream4/playlist.m3u8"
+    }],
+    rtmp: {
+        bufferlength: 0
+    },
+    fallback: true,
+    stretching: "uniform"
+});
+jwplayer("player4").on("displayClick", function(){
+    ReplaceContent(4)
+    SetColor(4);
+});
+jwplayer("player4").onError(function(){
+    jwplayer("player4").load();
+    jwplayer("player4").play();
+});
+
+// jwplayer("player5").setup({
+//     controls: false,
+//     mute: true,
+//     height: 100,
+//     width: 178,
+//     sources: [{
+//         file: "rtmp://52.196.81.194:1935/live/myStream5_160_p"
+//     }, {
+//         file: "http://52.196.81.194:1935/live/myStream5/playlist.m3u8"
+//     }],
+//     rtmp: {
+//         bufferlength: 0
+//     },
+//     fallback: true,
+//     stretching: "uniform"
+// });
+// jwplayer("player5").on("displayClick", function(){
+//     ReplaceContent(5)
+//     SetColor(5);
+// });
+// jwplayer("player5").onError(function(){
+//     jwplayer("player5").load();
+//     jwplayer("player5").play();
+// });
+//
+// jwplayer("player6").setup({
+//     controls: false,
+//     mute: true,
+//     height: 100,
+//     width: 178,
+//     sources: [{
+//         file: "rtmp://52.196.81.194:1935/live/myStream6_160_p"
+//     }, {
+//         file: "http://52.196.81.194:1935/live/myStream6/playlist.m3u8"
+//     }],
+//     rtmp: {
+//         bufferlength: 0
+//     },
+//     fallback: true,
+//     stretching: "uniform"
+// });
+// jwplayer("player6").on("displayClick", function(){
+//     ReplaceContent(6)
+//     SetColor(6);
+// });
+// jwplayer("player6").onError(function(){
+//     jwplayer("player6").load();
+//     jwplayer("player6").play();
+// });
+//
+// jwplayer("player7").setup({
+//     controls: false,
+//     mute: true,
+//     height: 100,
+//     width: 178,
+//     sources: [{
+//         file: "rtmp://52.196.81.194:1935/live/myStream7_160_p"
+//     }, {
+//         file: "http://52.196.81.194:1935/live/myStream7/playlist.m3u8"
+//     }],
+//     rtmp: {
+//         bufferlength: 0
+//     },
+//     fallback: true,
+//     stretching: "uniform"
+// });
+// jwplayer("player7").on("displayClick", function(){
+//     ReplaceContent(7)
+//     SetColor(7);
+// });
+// jwplayer("player7").onError(function(){
+//     jwplayer("player7").load();
+//     jwplayer("player7").play();
+// });
+//
+// jwplayer("player8").setup({
+//     controls: false,
+//     mute: true,
+//     height: 100,
+//     width: 178,
+//     sources: [{
+//         file: "rtmp://52.196.81.194:1935/live/myStream8_160_p"
+//     }, {
+//         file: "http://52.196.81.194:1935/live/myStream8/playlist.m3u8"
+//     }],
+//     rtmp: {
+//         bufferlength: 0
+//     },
+//     fallback: true,
+//     stretching: "uniform"
+// });
+// jwplayer("player8").on("displayClick", function(){
+//     ReplaceContent(8)
+//     SetColor(8);
+// });
+//
+// jwplayer("player8").onError(function(){
+//     jwplayer("player8").load();
+//     jwplayer("player8").play();
+// });
+
+</script>
+
+</body>
+</html>
